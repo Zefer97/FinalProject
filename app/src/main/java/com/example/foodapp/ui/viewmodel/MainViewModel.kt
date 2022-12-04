@@ -1,7 +1,9 @@
 package com.example.foodapp.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import com.example.foodapp.data.entity.CategoryFood
 import com.example.foodapp.data.entity.Foods
 import com.example.foodapp.data.repo.FoodsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,6 +16,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(var frepo : FoodsRepository) : ViewModel() {
 
     var foodList = MutableLiveData<List<Foods>>()
+
 
     init {
         loadFoods()

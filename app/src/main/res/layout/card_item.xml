@@ -7,6 +7,9 @@
         <variable
             name="foods"
             type="com.example.foodapp.data.entity.Foods" />
+        <variable
+            name="adapter"
+            type="com.example.foodapp.ui.adapter.AdapterItem" />
     </data>
 
     <LinearLayout
@@ -31,8 +34,9 @@
                     android:id="@+id/image_item"
                     android:layout_width="95dp"
                     android:layout_height="84dp"
-                    android:src="@{foods.image}"
-                    android:layout_marginRight="5dp"
+
+                    android:layout_marginStart="44dp"
+                    android:background="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -44,7 +48,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@{foods.name}"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.439"

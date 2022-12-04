@@ -30,7 +30,6 @@ class AdapterCategory (var mContext : Context, var categoryList : List<Foods>, v
         val b = holder.binding
         b.foodscat = food
 
-
     }
 
     override fun getItemCount(): Int {

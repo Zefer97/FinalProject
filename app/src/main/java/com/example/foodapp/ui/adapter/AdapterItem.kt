@@ -29,14 +29,26 @@ class AdapterItem (var mContext : Context, var foodList : List<Foods>, var viewM
     override fun onBindViewHolder(holder: CardItemHolder, position: Int) {
         val food = foodList.get(position)
         val b = holder.binding
+       var url = food.image
+       var food_url = "http://kasimadalan.pe.hu/images/$url"
         b.foods = food
-        Glide.with(mContext)
-            .load(foodList)
-            .into(b.imageItem)
+//         Glide.with(mContext)
+//            .load(food_url)
+//            .into(b.imageItem)
+        b.imageItem.setImageResource(
+            mContext.resources.getIdentifier(food.image,"$food_url"
+                ,mContext.packageName)
+        )
+        fun showImage(image : List<Foods>){
+            var url = "http://kasimadalan.pe.hu/foods/images/$image"
+            Glide.with(mContext).load(url).into(b.imageItem)
+        }
     }
 
     override fun getItemCount(): Int {
        return foodList.size
     }
+
+
 
 }
