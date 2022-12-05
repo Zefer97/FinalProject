@@ -7,9 +7,7 @@
         <variable
             name="mainFragment"
             type="com.example.foodapp.ui.fragments.MainFragment" />
-        <variable
-            name="toolbarMain"
-            type="String" />
+
         <variable
             name="adapterItem"
             type="com.example.foodapp.ui.adapter.AdapterItem" />
@@ -20,6 +18,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragments.MainFragment">

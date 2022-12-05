@@ -1,15 +1,15 @@
 package com.example.foodapp.data.datasource
 
 import com.example.foodapp.data.entity.Foods
-import com.example.foodapp.retrofit.FoodDao
+import com.example.foodapp.data.services.FoodService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FoodsDataSource( var fdao : FoodDao) {
+class FoodsRemoteDataSource(var foodService : FoodService) {
 
     suspend fun loadFoods(): List<Foods> =
         withContext(Dispatchers.IO) {
-            fdao.loadFood().foods
+            foodService.loadFood().foods
         }
 //
 //    suspend fun insertFoods(name :String,
