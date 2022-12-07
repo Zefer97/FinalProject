@@ -5,9 +5,8 @@
 
     <data>
         <variable
-            name="mainFragment"
-            type="com.example.foodapp.ui.fragments.MainFragment" />
-
+            name="toolbarMain"
+            type="String" />
         <variable
             name="adapterItem"
             type="com.example.foodapp.ui.adapter.AdapterItem" />
@@ -23,11 +22,11 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragments.MainFragment">
 
+
         <androidx.recyclerview.widget.RecyclerView
 
             android:id="@+id/recyclerViewCategory"
             android:adapter="@{adapterCategory}"
-            android:background="@color/teal_700"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="74dp"
@@ -35,23 +34,23 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/card_category" />
+            tools:listitem="@layout/card_category"
+            android:layout_marginTop="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewItem"
-            android:adapter="@{adapterItem}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/teal_700"
-            android:layout_marginTop="80dp"
+            android:layout_height="0dp"
+            android:adapter="@{adapterItem}"
+            android:layout_marginTop="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/card_item">
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewCategory"
+            tools:listitem="@layout/card_item" />
 
-        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

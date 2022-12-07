@@ -19,7 +19,7 @@ interface FoodService {
     @FormUrlEncoded
     suspend fun insertFood(name :String, image :String,
                            price :Int, category :String,
-                           rderAmount:Int, userName :String) : CRUDResponse
+                           orderAmount:Int, userName :String) : CRUDResponse
 
 //    @POST("foods/deleteFood.php")
 //    @FormUrlEncoded

@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu"
-        android:title="Menu"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:id="@+id/mainFragment"
+        android:title=""
+        android:icon="@drawable/homeicon" />
     <item
-        android:id="@+id/cargo"
-        android:title="Cargo"
-        android:icon="@drawable/ic_baseline_2k_24"/>
+        android:id="@+id/cardFragment"
+        android:title=""
+        android:icon="@drawable/carticon"/>
     <item
         android:id="@+id/map"
-        android:title="Map"
-        android:icon="@drawable/ic_baseline_30fps_24"/>
+        android:title=""
+        android:icon="@drawable/wishlisticon"/>
     <item
         android:id="@+id/delivery"
-        android:title="Delivery"
-        android:icon="@drawable/ic_baseline_airport_shuttle_24"/>
+        android:title=""
+        android:icon="@drawable/homeicon"/>
 </menu>
