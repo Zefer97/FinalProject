@@ -17,6 +17,8 @@ class AdapterItem(var mContext: Context) :
 
     private var mItemList: ArrayList<Foods> = arrayListOf()
 
+    var foodItemClickListener: ((Foods)-> Unit)? = null
+
     @SuppressLint("NotifyDataSetChanged")
     fun setList(itemList: List<Foods>){
         mItemList.clear()
@@ -41,6 +43,9 @@ class AdapterItem(var mContext: Context) :
     override fun onBindViewHolder(holder: CardItemHolder, position: Int) {
         val foodItemModel = mItemList[position]
         val itemBinding = holder.binding
+        itemBinding.root.setOnClickListener {
+            foodItemClickListener?.invoke(foodItemModel)
+        }
         itemBinding.foods = foodItemModel
 
         Glide.with(holder.binding.root.context)

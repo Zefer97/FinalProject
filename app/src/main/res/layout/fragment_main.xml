@@ -24,6 +24,20 @@
         tools:context=".ui.fragments.MainFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recyclerViewCategory"
+            android:adapter="@{adapterCategory}"
+            android:background="@color/teal_700"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/card_category" />
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewItem"
             android:adapter="@{adapterItem}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -38,21 +52,6 @@
             tools:listitem="@layout/card_item">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.recyclerview.widget.RecyclerView
-
-            android:id="@+id/recyclerViewCategory"
-            android:adapter="@{adapterCategory}"
-            android:background="@color/teal_700"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_width="412dp"
-            android:layout_height="74dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/card_category" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -13,9 +13,6 @@
         <action
             android:id="@+id/toDetail"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/toCardbyMain"
-            app:destination="@id/cardFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardFragment"
@@ -30,5 +27,8 @@
         <action
             android:id="@+id/toCard"
             app:destination="@id/cardFragment" />
+        <argument
+            android:name="foodItemModel"
+            app:argType="com.example.foodapp.data.entity.Foods" />
     </fragment>
 </navigation>
