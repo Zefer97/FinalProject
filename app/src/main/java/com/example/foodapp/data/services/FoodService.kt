@@ -13,13 +13,15 @@ interface FoodService {
     //foods/deleteFood.php
     //foods/getFoodsCart.php
     @GET("foods/getAllFoods.php")
-    suspend fun loadFood() : FoodResponse
+    suspend fun loadFood(): FoodResponse
 
     @POST("foods/insertFood.php")
     @FormUrlEncoded
-    suspend fun insertFood(name :String, image :String,
-                           price :Int, category :String,
-                           orderAmount:Int, userName :String) : CRUDResponse
+    suspend fun insertFood(
+        name: String, image: String,
+        price: Int, category: String,
+        orderAmount: Int, userName: String
+    ): CRUDResponse
 
 //    @POST("foods/deleteFood.php")
 //    @FormUrlEncoded
@@ -28,6 +30,6 @@ interface FoodService {
 
     @POST("foods/getFoodsCart.php")
     @FormUrlEncoded
-    suspend fun getFoodsCart(userName :String) : CRUDResponse
+    suspend fun getFoodsCart(userName: String): CRUDResponse
 
 }

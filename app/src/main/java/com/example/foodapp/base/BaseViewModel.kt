@@ -1,17 +1,11 @@
 package com.example.foodapp.base
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.foodapp.data.entity.Foods
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-open class BaseViewModel: ViewModel() {
+open class BaseViewModel : ViewModel() {
 
     var error = SingleLiveEvent<String>()
 
@@ -31,7 +25,7 @@ open class BaseViewModel: ViewModel() {
             is SocketTimeoutException -> {
                 return "Data ni almaq uzun cekdi, zehmet olmasa daha sonra yoxlayarsiz"
             }
-            is UnknownHostException,is ConnectException,  -> {
+            is UnknownHostException, is ConnectException -> {
                 return "Interternet baglantinizi yoxlayin zehmet olsada, olmasada"
             }
             else -> {

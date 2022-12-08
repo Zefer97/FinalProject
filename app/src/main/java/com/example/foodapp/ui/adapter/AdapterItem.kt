@@ -17,10 +17,10 @@ class AdapterItem(var mContext: Context) :
 
     private var mItemList: ArrayList<Foods> = arrayListOf()
 
-    var foodItemClickListener: ((Foods)-> Unit)? = null
+    var foodItemClickListener: ((Foods) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(itemList: List<Foods>){
+    fun setList(itemList: List<Foods>) {
         mItemList.clear()
         mItemList.addAll(itemList)
         notifyDataSetChanged()

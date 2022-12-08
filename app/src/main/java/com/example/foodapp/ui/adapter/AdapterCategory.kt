@@ -54,7 +54,11 @@ class AdapterCategory(
             )
         )
         categoryBinding.imageView.setImageResource(
-            mContext.resources.getIdentifier(categoryItemModel.categoryName.toLowerCase(), "drawable", mContext.packageName)
+            mContext.resources.getIdentifier(
+                categoryItemModel.categoryName.toLowerCase(),
+                "drawable",
+                mContext.packageName
+            )
         )
 
         categoryBinding.root.setOnClickListener {
