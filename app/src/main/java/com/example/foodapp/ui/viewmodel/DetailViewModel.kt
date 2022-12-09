@@ -12,9 +12,9 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor (var foodRepo: FoodsRepository) : ViewModel() {
 
-    fun insertFood(id:Int,name:String,image :String,price:Int,category :String,orderAmount:Int){
+    fun insertFood(cartId:Int,name:String,image :String,price:Int,category :String,orderAmount:Int){
         CoroutineScope(Dispatchers.Main).launch{
-            foodRepo.insertFood(name, image,
+            foodRepo.insertFood(cartId,name, image,
                 price, category,
                 orderAmount , userName)
         }

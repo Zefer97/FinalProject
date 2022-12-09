@@ -17,7 +17,7 @@ interface FoodService {
 
     @POST("foods/insertFood.php")
     @FormUrlEncoded
-    suspend fun insertFood(
+    suspend fun insertFood(cartId:Int,
         name: String, image: String,
         price: Int, category: String,
         orderAmount: Int, userName: String

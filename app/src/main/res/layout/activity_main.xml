@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:itemIconSize="30dp"
+        android:background="@color/white"
         app:itemIconTint="@drawable/bottom_nav_icon_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

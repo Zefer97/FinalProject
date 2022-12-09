@@ -13,12 +13,19 @@
         <action
             android:id="@+id/toDetail"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardFragment"
         android:name="com.example.foodapp.ui.fragments.CardFragment"
         android:label="fragment_card"
-        tools:layout="@layout/fragment_card" />
+        tools:layout="@layout/fragment_card" >
+        <argument
+            android:name="cartItemModel"
+            app:argType="com.example.foodapp.data.entity.Foods" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.foodapp.ui.fragments.DetailFragment"
@@ -30,5 +37,11 @@
         <argument
             android:name="foodItemModel"
             app:argType="com.example.foodapp.data.entity.Foods" />
+        <action
+            android:id="@+id/toMaininDetail"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/toCardInDetail"
+            app:destination="@id/cardFragment" />
     </fragment>
 </navigation>

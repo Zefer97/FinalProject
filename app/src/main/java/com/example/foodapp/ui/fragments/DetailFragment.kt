@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentDetailBinding
 import com.example.foodapp.ui.viewmodel.DetailViewModel
@@ -18,11 +20,24 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
-    private lateinit var binding : FragmentDetailBinding
+    private lateinit var binding: FragmentDetailBinding
     private lateinit var viewModel: DetailViewModel
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detail, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.detailFragment = this
+
+        binding.imageViewBack.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toMaininDetail)
+
+        }
+        binding.imageViewCard.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toCardInDetail)
+        }
+
         return binding.root
     }
 
@@ -33,8 +48,10 @@ class DetailFragment : Fragment() {
         val resultFoods = bundle.foodItemModel
 
         Glide.with(binding.root.context)
-            .load(BASE_IMAGE_URL+bundle.foodItemModel.image)
-            .into(binding.imageView2)
+            .load(BASE_IMAGE_URL + bundle.foodItemModel.image)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            .skipMemoryCache(true)
+            .into(binding.imageFood)
 
 
         binding.foods = resultFoods
@@ -46,8 +63,7 @@ class DetailFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-    fun insertFood(id:Int,name:String,image :String,price:Int,category :String,orderAmount:Int){
-        viewModel.insertFood(id,name,image, price, category, orderAmount)
+    fun insertFood(cartId:Int,name:String,image :String,price:Int,category :String,orderAmount:Int){
+        viewModel.insertFood(cartId,name,image, price, category, orderAmount)
     }
-
 }

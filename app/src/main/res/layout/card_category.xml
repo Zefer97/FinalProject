@@ -9,12 +9,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="3dp">
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewCategory"
-            android:layout_width="95dp"
+            android:layout_width="90dp"
             android:layout_height="76dp"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="1dp"
@@ -39,6 +40,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
