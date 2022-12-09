@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/onBoardingFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -25,6 +25,9 @@
         <argument
             android:name="cartItemModel"
             app:argType="com.example.foodapp.data.entity.Foods" />
+        <action
+            android:id="@+id/action_cardFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -43,5 +46,13 @@
         <action
             android:id="@+id/toCardInDetail"
             app:destination="@id/cardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.example.foodapp.ui.fragments.obviewpager.ObViewPagerFragment"
+        android:label="OnBoardingFragment" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>
