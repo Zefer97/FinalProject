@@ -2,6 +2,7 @@ package com.example.foodapp.data.datasource
 
 import com.example.foodapp.data.entity.CRUDResponse
 import com.example.foodapp.data.entity.Foods
+import com.example.foodapp.data.entity.cardmodels.FoodsCart
 import com.example.foodapp.data.services.FoodService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,16 +16,22 @@ class FoodsRemoteDataSource(var foodService: FoodService) {
 
     //
     suspend fun insertFoods(
-        cartId: Int,
         name: String,
         image: String,
         price: Int,
         category: String,
         orderAmount: Int,
         userName: String
-    ): CRUDResponse = foodService.insertFood(cartId,name, image, price, category, orderAmount, userName)
-//
-    suspend fun getFoodsCart(userName:String) = foodService.getFoodsCart(userName)
+    ): CRUDResponse =
+        withContext(Dispatchers.IO) {
+            foodService.insertFood(name, image, price, category, orderAmount, userName)
+        }
+
+    //
+    suspend fun getFoodsCart(userName: String) =
+        withContext(Dispatchers.IO) {
+            foodService.getFoodsCart(userName)
+        }
 //
 //    suspend fun deleteFoods(cartId : Int,
 //                            userName : String) = foodService.deleteFood(cartId,userName)

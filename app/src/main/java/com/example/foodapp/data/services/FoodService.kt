@@ -1,7 +1,10 @@
 package com.example.foodapp.data.services
 
 import com.example.foodapp.data.entity.CRUDResponse
+import com.example.foodapp.data.entity.CardResponse
 import com.example.foodapp.data.entity.FoodResponse
+import com.example.foodapp.data.entity.cardmodels.CardModels
+import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -17,10 +20,13 @@ interface FoodService {
 
     @POST("foods/insertFood.php")
     @FormUrlEncoded
-    suspend fun insertFood(cartId:Int,
-        name: String, image: String,
-        price: Int, category: String,
-        orderAmount: Int, userName: String
+    suspend fun insertFood(
+        @Field("name") name: String,
+        @Field("image") image: String,
+        @Field("price") price: Int,
+        @Field("category") category: String,
+        @Field("orderAmount") orderAmount: Int,
+        @Field("userName") userName: String
     ): CRUDResponse
 
 //    @POST("foods/deleteFood.php")
@@ -30,6 +36,6 @@ interface FoodService {
 
     @POST("foods/getFoodsCart.php")
     @FormUrlEncoded
-    suspend fun getFoodsCart(userName: String): CRUDResponse
+    suspend fun getFoodsCart(@Field("userName") userName: String): CardModels
 
 }

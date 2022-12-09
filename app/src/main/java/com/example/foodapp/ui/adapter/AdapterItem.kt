@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,6 +15,12 @@ import com.example.foodapp.util.Constant.BASE_IMAGE_URL
 
 class AdapterItem(var mContext: Context) :
     RecyclerView.Adapter<AdapterItem.CardItemHolder>() {
+
+    private var selectedCategoryId: String = "All"
+
+    fun updateSelectedCategoryId(value: String){
+        this.selectedCategoryId = value
+    }
 
     private var mItemList: ArrayList<Foods> = arrayListOf()
 
@@ -47,6 +54,8 @@ class AdapterItem(var mContext: Context) :
             foodItemClickListener?.invoke(foodItemModel)
         }
         itemBinding.foods = foodItemModel
+
+        itemBinding.categoryNameTextView.isVisible = selectedCategoryId == "All"
 
         Glide.with(holder.binding.root.context)
             .load(BASE_IMAGE_URL + foodItemModel.image)

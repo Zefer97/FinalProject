@@ -38,7 +38,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/textView5"
+                    app:layout_constraintBottom_toTopOf="@+id/categoryNameTextView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.439"
                     app:layout_constraintStart_toEndOf="@+id/image_item"
@@ -55,7 +55,7 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/categoryNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

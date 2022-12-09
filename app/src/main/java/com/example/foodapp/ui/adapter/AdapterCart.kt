@@ -7,11 +7,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.R
 import com.example.foodapp.data.entity.Foods
+import com.example.foodapp.data.entity.cardmodels.FoodsCart
 import com.example.foodapp.databinding.CardCartBinding
 import com.example.foodapp.ui.viewmodel.CardViewModel
 
 
-class AdapterCart(var mContext : Context, var foodList : List<Foods>, var viewModel : CardViewModel)
+class AdapterCart(var mContext : Context, var foodList : List<FoodsCart>, var viewModel : CardViewModel)
     :RecyclerView.Adapter<AdapterCart.CardCartHolder>(){
 
     inner class CardCartHolder(var binding: CardCartBinding) : RecyclerView.ViewHolder(binding.root)
@@ -31,7 +32,7 @@ class AdapterCart(var mContext : Context, var foodList : List<Foods>, var viewMo
         val foods = foodList[position]
         val itemBinding = holder.binding
 
-        itemBinding.cartName.text = "Salam"
+        itemBinding.cartName.text = foods.name
     }
 
     override fun getItemCount(): Int {

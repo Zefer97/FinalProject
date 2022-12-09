@@ -19,6 +19,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class CardFragment : Fragment() {
     private lateinit var binding : FragmentCardBinding
     private lateinit var viewModel: CardViewModel
+
+    override fun onCreate(savedInstanceState : Bundle?) {
+        super.onCreate(savedInstanceState)
+        val ViewModel: CardViewModel by viewModels()
+        viewModel = ViewModel
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_card, container, false)
         binding.cartFragment = this
@@ -33,14 +40,13 @@ class CardFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
-        super.onCreate(savedInstanceState)
-        val ViewModel: CardViewModel by viewModels()
-        viewModel = ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getFoodsCart("elcin")
     }
 
-    fun getFoodsCart() {
-        viewModel.getFoodsCart("elcin")
-        Log.e("myTag","isleyir")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.clearUiData()
     }
 }

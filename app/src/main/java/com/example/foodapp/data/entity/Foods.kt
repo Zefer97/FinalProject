@@ -10,6 +10,5 @@ data class Foods(
     var price: Int,
     var orderAmount:Int,
     var category: String
-//    <!--        cartId:Int,name:String,image :String,price:Int,category :String,orderAmount:Int-->
 ) : Serializable {
 }

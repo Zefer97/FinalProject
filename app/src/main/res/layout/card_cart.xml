@@ -73,30 +73,10 @@
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.437"
+                    app:layout_constraintHorizontal_bias="0.355"
                     app:layout_constraintStart_toEndOf="@+id/image_item"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.904" />
-
-                <ImageView
-                    android:id="@+id/imageRemove"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@+id/cartPrice"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/image_item"
-                    app:srcCompat="@drawable/remove"
-                    tools:layout_editor_absoluteY="51dp" />
-
-                <ImageView
-                    android:id="@+id/imageAdd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/cartPrice"
-                    app:srcCompat="@drawable/add"
-                    tools:layout_editor_absoluteY="51dp" />
+                    app:layout_constraintVertical_bias="0.943" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
