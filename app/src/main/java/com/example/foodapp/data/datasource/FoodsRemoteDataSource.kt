@@ -14,7 +14,6 @@ class FoodsRemoteDataSource(var foodService: FoodService) {
             foodService.loadFood().foods
         }
 
-    //
     suspend fun insertFoods(
         name: String,
         image: String,
@@ -27,14 +26,30 @@ class FoodsRemoteDataSource(var foodService: FoodService) {
             foodService.insertFood(name, image, price, category, orderAmount, userName)
         }
 
-    //
+
     suspend fun getFoodsCart(userName: String) =
         withContext(Dispatchers.IO) {
             foodService.getFoodsCart(userName)
         }
-//
-//    suspend fun deleteFoods(cartId : Int,
-//                            userName : String) = foodService.deleteFood(cartId,userName)
+    suspend fun getWish(userName: String) =
+        withContext(Dispatchers.IO) {
+            foodService.getWish("zafar")
+        }
+
+    suspend fun deleteFoods(cartId : Int,
+                            userName : String) = foodService.deleteFoods(cartId,userName)
+
+    suspend fun insertFoodsWish(
+        name: String,
+        image: String,
+        price: Int,
+        category: String,
+        orderAmount: Int,
+        userName: String
+    ): CRUDResponse =
+        withContext(Dispatchers.IO) {
+            foodService.insertFoodWish(name, image, price, category, orderAmount, "zafar")
+        }
 }
 
 

@@ -29,13 +29,28 @@ interface FoodService {
         @Field("userName") userName: String
     ): CRUDResponse
 
-//    @POST("foods/deleteFood.php")
-//    @FormUrlEncoded
-//    suspend fun deleteFood(cartId : Int, userName : String) : CRUDResponse
-//
+    @POST("foods/deleteFood.php")
+    @FormUrlEncoded
+    suspend fun deleteFoods(@Field("cartId")cartId : Int, @Field("userName")userName : String) : CRUDResponse
+
 
     @POST("foods/getFoodsCart.php")
     @FormUrlEncoded
     suspend fun getFoodsCart(@Field("userName") userName: String): CardModels
+
+    @POST("foods/getFoodsCart.php")
+    @FormUrlEncoded
+    suspend fun getWish(@Field("userName") userName: String): CardModels
+
+    @POST("foods/insertFood.php")
+    @FormUrlEncoded
+    suspend fun insertFoodWish(
+        @Field("name") name: String,
+        @Field("image") image: String,
+        @Field("price") price: Int,
+        @Field("category") category: String,
+        @Field("orderAmount") orderAmount: Int,
+        @Field("userName") userName: String
+    ): CRUDResponse
 
 }

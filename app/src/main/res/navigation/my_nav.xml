@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_cardFragment"
             app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_wishListFragment"
+            app:destination="@id/wishListFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardFragment"
@@ -55,4 +58,8 @@
             android:id="@+id/action_onBoardingFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/wishListFragment"
+        android:name="com.example.foodapp.ui.fragments.WishListFragment"
+        android:label="WishListFragment" />
 </navigation>

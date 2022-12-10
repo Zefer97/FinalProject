@@ -1,9 +1,12 @@
 package com.example.foodapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +18,7 @@ import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentDetailBinding
 import com.example.foodapp.ui.viewmodel.DetailViewModel
 import com.example.foodapp.util.Constant.BASE_IMAGE_URL
+import com.example.foodapp.util.go
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -22,6 +26,9 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var viewModel: DetailViewModel
+
+    var orderAmount = 1
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,9 +41,6 @@ class DetailFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.toMaininDetail)
 
         }
-        binding.imageViewCard.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.toCardInDetail)
-        }
 
         return binding.root
     }
@@ -47,23 +51,70 @@ class DetailFragment : Fragment() {
         val bundle: DetailFragmentArgs by navArgs()
         val resultFoods = bundle.foodItemModel
 
+
         Glide.with(binding.root.context)
             .load(BASE_IMAGE_URL + bundle.foodItemModel.image)
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .skipMemoryCache(true)
             .into(binding.imageFood)
 
-
         binding.foods = resultFoods
+
+        viewModel.insertFoodResponse.observe(viewLifecycleOwner) {
+            if(it.success == 1){
+                Toast.makeText(requireContext(),"Successfully",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(),"Error happening. Please try again",Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.button.setOnClickListener {
+            viewModel.insertFood(
+                name  = resultFoods.name,
+                image = resultFoods.image,
+                price = resultFoods.price,
+                category = resultFoods.category,
+                orderAmount = getOrderAmountValue()
+            )
+        }
+        binding.imageViewWish.setOnClickListener {
+            viewModel.insertFoodWish(
+                name  = resultFoods.name,
+                image = resultFoods.image,
+                price = resultFoods.price,
+                category = resultFoods.category,
+                orderAmount = getOrderAmountValue()
+            )
+        }
+
+
+        orderAmount = 1
+
+        binding.imageViewAdd.setOnClickListener {
+            orderAmount++
+            binding.orderAmountTextView.text = orderAmount.toString()
+        }
+        binding.imageViewRemove.setOnClickListener {
+            if (orderAmount >1){
+                orderAmount--
+                binding.orderAmountTextView.text = orderAmount.toString()
+            }else{
+                binding.orderAmountTextView.text = orderAmount.toString()
+            }
+        }
+
+    }
+
+    private fun getOrderAmountValue(): Int {
+        return try {
+            binding.orderAmountTextView.text.toString().toInt()
+        } catch (e: Exception){
+            1
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel: DetailViewModel by viewModels()
         viewModel = tempViewModel
-    }
-
-    fun insertFood(cartId:Int,name:String,image :String,price:Int,category :String,orderAmount:Int){
-        viewModel.insertFood(cartId,name,image, price, category, orderAmount)
     }
 }

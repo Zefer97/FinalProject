@@ -17,10 +17,18 @@ class FoodsRepository(var foodsRemoteDataSource: FoodsRemoteDataSource) {
         userName: String
     ): CRUDResponse =
         foodsRemoteDataSource.insertFoods(name, image, price, category, orderAmount, userName)
-    //
-//    suspend fun deleteFood(cartId : Int,
-//                           userName : String)= foodsRemoteDataSource.deleteFoods(cartId, userName)
+    suspend fun insertFoodWish(
+        name: String,
+        image: String,
+        price: Int,
+        category: String,
+        orderAmount: Int,
+        userName: String
+    ): CRUDResponse =
+        foodsRemoteDataSource.insertFoodsWish(name, image, price, category, orderAmount, "zafar")
+    suspend fun deleteFoods(cartId : Int, userName : String)= foodsRemoteDataSource.deleteFoods(cartId, userName)
     suspend fun getFoodsCart(userName : String) = foodsRemoteDataSource.getFoodsCart(userName)
+    suspend fun getWish(userName: String) = foodsRemoteDataSource.getWish("zafar")
 
 
 }
