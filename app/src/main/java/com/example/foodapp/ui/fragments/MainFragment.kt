@@ -7,15 +7,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodapp.MainActivity
 import com.example.foodapp.R
 import com.example.foodapp.data.entity.CategoryFood
 import com.example.foodapp.databinding.FragmentMainBinding
 import com.example.foodapp.ui.adapter.AdapterCategory
 import com.example.foodapp.ui.adapter.AdapterItem
 import com.example.foodapp.ui.viewmodel.MainViewModel
+import com.example.foodapp.util.go
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +37,7 @@ class MainFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val viewModel: MainViewModel by viewModels()
         this.viewModel = viewModel
+
     }
 
     override fun onCreateView(
@@ -55,7 +59,13 @@ class MainFragment : Fragment() {
                 MainFragmentDirections.toDetail(mFoodItem)
             )
         }
+        binding.goCard.setOnClickListener {
+            Navigation.go(it,R.id.action_mainFragment_to_cardFragment)
 
+        }
+        binding.goWish.setOnClickListener {
+            Navigation.go(it,R.id.action_mainFragment_to_wishListFragment)
+        }
 
         return binding.root
     }
@@ -92,6 +102,7 @@ class MainFragment : Fragment() {
                     adapterFoodItem.setList(
                         viewModel.getItemListByCategoryId(selectedCategoryName)
                     )
+                    adapterFoodItem.updateSelectedCategoryId(selectedCategoryName)
                 }
 
             }

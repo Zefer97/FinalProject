@@ -23,13 +23,13 @@ open class BaseViewModel : ViewModel() {
     fun handleApiCallException(throwable: Throwable): String {
         when (throwable) {
             is SocketTimeoutException -> {
-                return "Data ni almaq uzun cekdi, zehmet olmasa daha sonra yoxlayarsiz"
+                return "It took a long time to get the data, please check back later"
             }
             is UnknownHostException, is ConnectException -> {
-                return "Interternet baglantinizi yoxlayin zehmet olsada, olmasada"
+                return "Please check your internet connection"
             }
             else -> {
-                return "Xeta bash verdi, yeniden cehd edin"
+                return "Please try again"
             }
         }
     }

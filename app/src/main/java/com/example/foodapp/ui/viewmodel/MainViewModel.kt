@@ -1,6 +1,5 @@
 package com.example.foodapp.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -35,20 +34,6 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
-//    private fun addFoods() {
-//        viewModelScope.launch {
-//            foodRepo.insertFood(
-//                "name1",
-//                "sadasd",
-//                10,
-//                "dasdasd",
-//                1,
-//                "birikiuch"
-//            )
-//        }
-//    }
-
 
     fun getItemListByCategoryId(mSelectedCategoryId: String): List<Foods> {
         selectedCategoryId = mSelectedCategoryId
