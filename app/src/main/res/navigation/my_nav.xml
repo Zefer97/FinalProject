@@ -55,6 +55,9 @@
         android:name="com.example.foodapp.ui.fragments.obviewpager.ObViewPagerFragment"
         android:label="OnBoardingFragment" >
         <action
+            android:id="@+id/action_onBoardingFragment_to_basicLoginFragment"
+            app:destination="@id/basicLoginFragment" />
+        <action
             android:id="@+id/action_onBoardingFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
@@ -62,4 +65,12 @@
         android:id="@+id/wishListFragment"
         android:name="com.example.foodapp.ui.fragments.WishListFragment"
         android:label="WishListFragment" />
+    <fragment
+        android:id="@+id/basicLoginFragment"
+        android:name="com.example.foodapp.ui.fragments.BasicLoginFragment"
+        android:label="BasicLoginFragment" >
+        <action
+            android:id="@+id/action_basicLoginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

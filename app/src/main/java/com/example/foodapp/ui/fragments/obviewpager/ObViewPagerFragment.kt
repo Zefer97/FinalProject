@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.foodapp.MainActivity
@@ -14,6 +15,7 @@ import com.example.foodapp.ui.adapter.ObViewPagerAdapter
 import com.example.foodapp.ui.fragments.obviewpager.screens.OnBoardingFirstFragment
 import com.example.foodapp.ui.fragments.obviewpager.screens.OnBoardingSecondFragment
 import com.example.foodapp.ui.fragments.obviewpager.screens.OnBoardingThreeFragment
+import com.example.foodapp.util.go
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_obviewpager.*
 
@@ -97,7 +99,7 @@ class ObViewPagerFragment : Fragment() {
                     onBoardingViewPager.currentItem = 2
                 }
                 2 -> {
-                    findNavController().navigate(R.id.action_onBoardingFragment_to_mainFragment)
+                   Navigation.go(it,R.id.action_onBoardingFragment_to_basicLoginFragment)
                 }
             }
         }
