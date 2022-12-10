@@ -10,11 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foodapp.R
-import com.example.foodapp.databinding.FragmentCardBinding
 import com.example.foodapp.databinding.FragmentWishListBinding
-import com.example.foodapp.ui.adapter.AdapterCart
 import com.example.foodapp.ui.adapter.AdapterWish
-import com.example.foodapp.ui.viewmodel.CardViewModel
 import com.example.foodapp.ui.viewmodel.WishViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

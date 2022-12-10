@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class CardFragment : Fragment() {
     private lateinit var binding : FragmentCardBinding
     private lateinit var viewModel: CardViewModel
-
+    var totalAmount = 0
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         val viewModel: CardViewModel by viewModels()
@@ -29,15 +29,17 @@ class CardFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_card, container, false)
         binding.cartFragment = this
-        val totalAmount = 0
+        
 
-        viewModel.foodList.observe(viewLifecycleOwner){
+        viewModel.foodList.observe(viewLifecycleOwner){ it ->
             val adapterCart = AdapterCart(requireContext(),it,viewModel)
             binding.adapterCart = adapterCart
-//            it.forEach(
-//
-//            )
+            it.forEach{
+                totalAmount = (totalAmount+it.orderAmount*it.price)
+            }
+            binding.totalPrice.text ="$$totalAmount"
         }
+
         binding.recyclerViewCart.layoutManager = GridLayoutManager(context,1)
 
         binding.imageViewBackDetail.setOnClickListener {
